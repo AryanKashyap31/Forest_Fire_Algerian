@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FWI Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+        }
+        input[type="text"] {
+            width: 300px;
+            padding: 8px;
+            margin-bottom: 10px;
+        }
+        input[type="submit"], button {
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <h1>FWI Prediction</h1>
+    
+    <form action="{{ url_for('predict_datapoint') }}" method="post">
+        <label for="Temperature">Temperature:</label><br>
+        <input type="text" id="Temperature" name="Temperature"><br>
+
+        <label for="RH">RH:</label><br>
+        <input type="text" id="RH" name="RH"><br>
+
+        <label for="Ws">Ws:</label><br>
+        <input type="text" id="Ws" name="Ws"><br>
+
+        <label for="Rain">Rain:</label><br>
+        <input type="text" id="Rain" name="Rain"><br>
+
+        <label for="FFMC">FFMC:</label><br>
+        <input type="text" id="FFMC" name="FFMC"><br>
+
+        <label for="DMC">DMC:</label><br>
+        <input type="text" id="DMC" name="DMC"><br>
+
+        <label for="ISI">ISI:</label><br>
+        <input type="text" id="ISI" name="ISI"><br>
+
+        <label for="Classes">Classes (0 = not fire, 1 = fire):</label><br>
+        <input type="text" id="Classes" name="Classes"><br>
+
+        <label for="Region">Region (1 or 2):</label><br>
+        <input type="text" id="Region" name="Region"><br><br>
+
+        <button type="submit">Predict</button>
+    </form>
+
+    {% if result %}
+    <h2>THE FWI PREDICTION IS: {{ result }}</h2>
+    {% endif %}
+</body>
+</html>
